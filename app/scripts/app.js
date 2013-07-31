@@ -4,7 +4,7 @@ project.controllers = {};
 project.app = new Swift.App();
 
 project.controllers.homeController = new project.app.Controller('container', 'home-view');
-project.controllers.homeController.$compass = {
+project.controllers.homeController.$context = {
 	name: 'billpull'
 };
 

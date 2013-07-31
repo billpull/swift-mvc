@@ -58,7 +58,7 @@
 		app.Controller = function (view, template) {
 			var controller = this;
 			
-			controller.$compass = {};
+			controller.$context = {};
 
 			controller.view = view;
 			controller.template = template;
@@ -75,7 +75,7 @@
 				} else {
 					var templateStr = $templateSelector.html();
 						template = Handlebars.compile(templateStr),
-						compiled = template(controller.$compass);
+						compiled = template(controller.$context);
 					
 					$viewContainer.html(compiled);
 				}
