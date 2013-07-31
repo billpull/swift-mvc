@@ -91,8 +91,6 @@ Sample HTML
         <script src="simrou.min.js"></script>
         <script src="swift.js"></script>
 
-        <script src="app.js"></script>
-
         <script id="home-view" type="text/x-handlebars-template">
           <h1>Welcome to home {{name}}</h1>
         </script>
@@ -100,6 +98,16 @@ Sample HTML
         <script id="product-view" type="text/x-handlebars-template">
           welcome to products.
         </script>
+
+        <script src="app.js"></script>
 </body>
 
 ```
+
+TODO
+--------
+ - Remove Dependencies: Simrou, Handlebars
+ - Configurable templating system: beyond handlebars, string templates, file templates
+ - Flush out Model layer: what methods are needed for model layer?
+ - Subscribable Models
+ - Two Way Data Binding
