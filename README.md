@@ -77,3 +77,29 @@ The run method takes two params;
  - startRoute: the route that should be navigated to first.
 
 ``project.app.run(project.routes, project.routes.home);``
+
+
+Sample HTML
+------------------
+
+```
+ <body>
+        <div id="container"></div>
+
+        <script src="jquery.js"></script>
+        <script src="handlebars.js"></script>
+        <script src="simrou.min.js"></script>
+        <script src="swift.js"></script>
+
+        <script src="app.js"></script>
+
+        <script id="home-view" type="text/x-handlebars-template">
+          <h1>Welcome to home {{name}}</h1>
+        </script>
+
+        <script id="product-view" type="text/x-handlebars-template">
+          welcome to products.
+        </script>
+</body>
+
+```
