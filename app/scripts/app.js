@@ -1,15 +1,14 @@
 var project = {};
 project.controllers = {};
-project.models = {};
 
 project.app = new Swift.App();
 
 project.controllers.homeController = new project.app.Controller('container', 'home-view');
 project.controllers.homeController.$compass = {
-	name: 'William Pullen'
+	name: 'billpull'
 };
 
-project.controllers.productController = new project.app.Controller('container', 'product-view')
+project.controllers.productController = new project.app.Controller('container', 'product-view');
 
 project.routes = {
 	home: new Swift.Route('/home', project.controllers.homeController),
