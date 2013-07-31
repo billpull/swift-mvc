@@ -106,6 +106,8 @@ Sample HTML
 
 TODO
 --------
+ - Package repo for easier navigation
+ - AMD project
  - Remove Dependencies: Simrou, Handlebars
  - Configurable templating system: beyond handlebars, string templates, file templates
  - Flush out Model layer: what methods are needed for model layer?
