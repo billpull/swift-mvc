@@ -11,27 +11,33 @@ Dependencies:
 
 Creating a new project
 ------------------------
-``var project = {};
+```
+var project = {};
 
-project.app = new Swift.App();``
+project.app = new Swift.App();
+```
 
 Initialize Controllers
 ------------------------
-``project.controllers = {};
+```
+project.controllers = {};
 
 project.controllers.homeController = new project.app.Controller('container', 'home-view');
 project.controllers.homeController.$compass = {
 	name: 'billpull'
 };
 
-project.controllers.productController = new project.app.Controller('container', 'product-view');``
+project.controllers.productController = new project.app.Controller('container', 'product-view');
+```
 
 Define Routes
 -----------------
-``project.routes = {
+```
+project.routes = {
 	home: new Swift.Route('/home', project.controllers.homeController),
 	products: new Swift.Route('/products', project.controllers.productController)
-};``
+};
+```
 
 Initialize Application
 ------------------------
