@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Swift-mvc by billpull</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Swift-mvc</h1>
+        <h2>Attempting to make a no nonsense JS MVC framework</h2>
+        <a href="https://github.com/billpull/swift-mvc" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="swift-mvc" class="anchor" href="#swift-mvc"><span class="octicon octicon-link"></span></a>swift-mvc</h1>
+
+<p>Attempting to make a no nonsense JS MVC framework.</p>
+
+<h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies:</h2>
+
+<ul>
+<li>jQuery</li>
+<li>Handlebars</li>
+<li><a href="https://github.com/buero-fuer-ideen/Simrou">Simrou</a></li>
+</ul><h2>
+<a name="creating-a-new-project" class="anchor" href="#creating-a-new-project"><span class="octicon octicon-link"></span></a>Creating a new project</h2>
+
+<p>Here we create a namespace for our project and then
+attach a <code>Swift.App</code> object to our project.</p>
+
+<pre><code>var project = {};
+
+project.app = new Swift.App();
+</code></pre>
+
+<h2>
+<a name="initialize-controllers" class="anchor" href="#initialize-controllers"><span class="octicon octicon-link"></span></a>Initialize Controllers</h2>
+
+<p>The <code>Controller</code> object is a child of the <code>Swift.App</code> instance we
+created earlier. </p>
+
+<p>A Controller takes two parameters:</p>
+
+<ul>
+<li>view: the id of an element that the controller will interact with</li>
+<li>template: the id of a handlebars template script element to render</li>
+</ul><p>Controllers have the following default HTTP methods:</p>
+
+<ul>
+<li>get: default action is to render the template in ther view.</li>
+<li>post: not implemented by default.</li>
+<li>put: not implemented by default.</li>
+<li>delete: not implemented by default.</li>
+</ul><p>These methods are public so they can easily be overridden.</p>
+
+<p>The controller comes with a <code>$context</code> property which provides the context
+for your handlebars template to be rendered.</p>
+
+<pre><code>project.controllers = {};
+
+project.controllers.homeController = new project.app.Controller('container', 'home-view');
+project.controllers.homeController.$context = {
+    name: 'billpull'
+};
+
+project.controllers.productController = new project.app.Controller('container', 'product-view');
+</code></pre>
+
+<h2>
+<a name="define-routes" class="anchor" href="#define-routes"><span class="octicon octicon-link"></span></a>Define Routes</h2>
+
+<p>Routes will be defined in an object.
+Each route is a separate <code>Swift.Route</code> instance.</p>
+
+<p>The route object takes two params:</p>
+
+<ul>
+<li>path: the path in the browser window to access route</li>
+<li>controller: a reference to a controller for the path.</li>
+</ul><pre><code>project.routes = {
+    home: new Swift.Route('/home', project.controllers.homeController),
+    products: new Swift.Route('/products', project.controllers.productController)
+};
+</code></pre>
+
+<h2>
+<a name="initialize-application" class="anchor" href="#initialize-application"><span class="octicon octicon-link"></span></a>Initialize Application</h2>
+
+<p>To initalize the application call the run method on your
+<code>Swift.App</code> instance.</p>
+
+<p>The run method takes two params;</p>
+
+<ul>
+<li>routes: your route object.</li>
+<li>startRoute: the route that should be navigated to first.</li>
+</ul><p><code>project.app.run(project.routes, project.routes.home);</code></p>
+
+<h2>
+<a name="sample-html" class="anchor" href="#sample-html"><span class="octicon octicon-link"></span></a>Sample HTML</h2>
+
+<pre><code> &lt;body&gt;
+        &lt;div id="container"&gt;&lt;/div&gt;
+
+        &lt;script src="jquery.js"&gt;&lt;/script&gt;
+        &lt;script src="handlebars.js"&gt;&lt;/script&gt;
+        &lt;script src="simrou.min.js"&gt;&lt;/script&gt;
+        &lt;script src="swift.js"&gt;&lt;/script&gt;
+
+        &lt;script id="home-view" type="text/x-handlebars-template"&gt;
+          &lt;h1&gt;Welcome to home {{name}}&lt;/h1&gt;
+        &lt;/script&gt;
+
+        &lt;script id="product-view" type="text/x-handlebars-template"&gt;
+          welcome to products.
+        &lt;/script&gt;
+
+        &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+</code></pre>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li>Package repo for easier navigation</li>
+<li>AMD project</li>
+<li>Remove Dependencies: Simrou, Handlebars</li>
+<li>Configurable templating system: beyond handlebars, string templates, file templates</li>
+<li>Flush out Model layer: what methods are needed for model layer?</li>
+<li>Subscribable Models</li>
+<li>Two Way Data Binding</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/billpull/swift-mvc/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/billpull/swift-mvc/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/billpull/swift-mvc"></a> is maintained by <a href="https://github.com/billpull">billpull</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
